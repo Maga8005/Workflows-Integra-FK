@@ -286,6 +286,53 @@
             margin-bottom: 8px;
         }
 
+        .country-selector {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .country-btn {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+        }
+
+        .country-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
+        }
+
+        .country-btn.active {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .country-btn.mexico {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .country-btn.mexico.active {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .country-content {
+            display: none;
+        }
+
+        .country-content.active {
+            display: block;
+        }
+
         .process-selector {
             display: flex;
             flex-wrap: wrap;
@@ -365,7 +412,7 @@
             margin-bottom: 8px;
         }
 
-        .process-step .team {
+        .process-step         .team {
             background: #27ae60;
             color: white;
             padding: 4px 10px;
@@ -373,6 +420,10 @@
             font-size: 0.8em;
             display: inline-block;
             margin-bottom: 10px;
+        }
+
+        .team.mexico {
+            background: #f39c12;
         }
 
         .process-step .step-description {
@@ -791,22 +842,29 @@
         <div id="processes" class="content-section">
             <h2 class="section-title">📋 Procesos Detallados</h2>
             
-            <div class="process-selector">
-                <button class="process-btn active" onclick="showProcess('process1', this)">Flujo 1: Cotización</button>
-                <button class="process-btn" onclick="showProcess('process2', this)">Flujo 2: Negociación</button>
-                <button class="process-btn" onclick="showProcess('process3', this)">Flujo 3: Documentos</button>
-                <button class="process-btn" onclick="showProcess('process4', this)">Flujo 4: Comité</button>
-                <button class="process-btn" onclick="showProcess('process5', this)">Flujo 5: Primer Comp.</button>
-                <button class="process-btn" onclick="showProcess('process6', this)">Flujo 6: Giro 1</button>
-                <button class="process-btn" onclick="showProcess('process7', this)">Flujo 7: Segundo Comp.</button>
-                <button class="process-btn" onclick="showProcess('process8', this)">Flujo 8: Giro 2</button>
-                <button class="process-btn" onclick="showProcess('process9', this)">Flujo 9: Factura</button>
-                <button class="process-btn" onclick="showProcess('process10', this)">Flujo 10: Fin. Logístico</button>
-                <button class="process-btn" onclick="showProcess('process11', this)">Flujo 11: Liberación</button>
-                <button class="process-btn" onclick="showProcess('process13', this)">Flujo 13: Cierre</button>
+            <div class="country-selector">
+                <button class="country-btn active" onclick="showCountry('colombia', this)">🇨🇴 Colombia</button>
+                <button class="country-btn mexico" onclick="showCountry('mexico', this)">🇲🇽 México</button>
             </div>
 
-            <div id="process1" class="individual-process active">
+            <!-- CONTENIDO COLOMBIA -->
+            <div id="colombia" class="country-content active">
+                <div class="process-selector">
+                    <button class="process-btn active" onclick="showProcess('colombia', 'process1', this)">Flujo 1: Cotización</button>
+                    <button class="process-btn" onclick="showProcess('colombia', 'process2', this)">Flujo 2: Negociación</button>
+                    <button class="process-btn" onclick="showProcess('colombia', 'process3', this)">Flujo 3: Documentos</button>
+                    <button class="process-btn" onclick="showProcess('colombia', 'process4', this)">Flujo 4: Comité</button>
+                    <button class="process-btn" onclick="showProcess('colombia', 'process5', this)">Flujo 5: Primer Comp.</button>
+                    <button class="process-btn" onclick="showProcess('colombia', 'process6', this)">Flujo 6: Giro 1</button>
+                    <button class="process-btn" onclick="showProcess('colombia', 'process7', this)">Flujo 7: Segundo Comp.</button>
+                    <button class="process-btn" onclick="showProcess('colombia', 'process8', this)">Flujo 8: Giro 2</button>
+                    <button class="process-btn" onclick="showProcess('colombia', 'process9', this)">Flujo 9: Factura</button>
+                    <button class="process-btn" onclick="showProcess('colombia', 'process10', this)">Flujo 10: Fin. Logístico</button>
+                    <button class="process-btn" onclick="showProcess('colombia', 'process11', this)">Flujo 11: Liberación</button>
+                    <button class="process-btn" onclick="showProcess('colombia', 'process13', this)">Flujo 13: Cierre</button>
+                </div>
+
+            <div id="colombia-process1" class="individual-process active">
                 <h3>📋 Flujo 1: Cotización a Pago Cuota Operacional</h3>
                 <div class="process-flowchart">
                     <div class="process-step">
@@ -860,7 +918,7 @@
                 </div>
             </div>
 
-            <div id="process2" class="individual-process">
+            <div id="colombia-process2" class="individual-process">
                 <h3>🌍 Flujo 2: Negociación Internacional</h3>
                 <div class="process-flowchart">
                     <div class="process-step">
@@ -900,7 +958,7 @@
                 </div>
             </div>
 
-            <div id="process3" class="individual-process">
+            <div id="colombia-process3" class="individual-process">
                 <h3>📄 Flujo 3: Solicitud y Creación de Documentos Legales</h3>
                 <div class="process-flowchart">
                     <div class="process-step">
@@ -940,7 +998,7 @@
                 </div>
             </div>
 
-            <div id="process4" class="individual-process">
+            <div id="colombia-process4" class="individual-process">
                 <h3>⚖️ Flujo 4: Comité de Giro</h3>
                 <div class="process-flowchart">
                     <div class="process-step">
@@ -980,7 +1038,7 @@
                 </div>
             </div>
 
-            <div id="process5" class="individual-process">
+            <div id="colombia-process5" class="individual-process">
                 <h3>💰 Flujo 5: Primer Componente de Financiamiento</h3>
                 <div class="process-flowchart">
                     <div class="process-step">
@@ -1041,7 +1099,7 @@
                 </div>
             </div>
 
-            <div id="process6" class="individual-process">
+            <div id="colombia-process6" class="individual-process">
                 <h3>🌍 Flujo 6: Giro 1 a Proveedor Internacional</h3>
                 <div class="process-flowchart">
                     <div class="process-step">
@@ -1109,7 +1167,7 @@
                 </div>
             </div>
 
-            <div id="process7" class="individual-process">
+            <div id="colombia-process7" class="individual-process">
                 <h3>💰 Flujo 7: Segundo Componente de Financiamiento</h3>
                 <div class="process-flowchart">
                     <div class="process-step">
@@ -1170,7 +1228,7 @@
                 </div>
             </div>
 
-            <div id="process8" class="individual-process">
+            <div id="colombia-process8" class="individual-process">
                 <h3>🌍 Flujo 8: Segundo Giro a Proveedor Internacional</h3>
                 <div class="process-flowchart">
                     <div class="process-step">
@@ -1203,7 +1261,7 @@
                 </div>
             </div>
 
-            <div id="process9" class="individual-process">
+            <div id="colombia-process9" class="individual-process">
                 <h3>📄 Flujo 9: Solicitud de Factura Final</h3>
                 <div class="process-flowchart">
                     <div class="process-step">
@@ -1236,7 +1294,7 @@
                 </div>
             </div>
 
-            <div id="process10" class="individual-process">
+            <div id="colombia-process10" class="individual-process">
                 <h3>🚛 Flujo 10: Componente de Financiamiento Logístico</h3>
                 <div class="process-flowchart">
                     <div class="process-step">
@@ -1283,7 +1341,7 @@
                 </div>
             </div>
 
-            <div id="process11" class="individual-process">
+            <div id="colombia-process11" class="individual-process">
                 <h3>📦 Flujo 11: Liberación de Mercancía</h3>
                 <div class="process-flowchart">
                     <div class="process-step">
@@ -1316,7 +1374,7 @@
                 </div>
             </div>
 
-            <div id="process13" class="individual-process">
+            <div id="colombia-process13" class="individual-process">
                 <h3>📋 Flujo 13: Cierre de Operación</h3>
                 <div class="process-flowchart">
                     <div class="process-step">
@@ -1352,6 +1410,206 @@
                     <div class="summary-card">
                         <h4>🔗 Activación</h4>
                         <p>Manual desde Flujo 11 por decisión de operaciones</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- CONTENIDO MÉXICO -->
+            <div id="mexico" class="country-content">
+                <div class="process-selector">
+                    <button class="process-btn active" onclick="showProcess('mexico', 'process5', this)">Flujo 5: Primer Comp.</button>
+                    <button class="process-btn" onclick="showProcess('mexico', 'process7', this)">Flujo 7: Segundo Comp.</button>
+                    <button class="process-btn" onclick="showProcess('mexico', 'process8', this)">Flujo 8: Giro 2</button>
+                </div>
+
+                <div id="mexico-process5" class="individual-process active">
+                    <h3>💰 Flujo 5 México: Primer Componente de Financiamiento</h3>
+                    <div class="process-flowchart">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="team">Procurement</div>
+                            <div class="step-title">Validación Proforma Proveedor</div>
+                            <div class="step-description">Adjuntar nueva proforma si hay cambios en negociación, si no hay cambios continuar sin adjuntar</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="team">Pricing</div>
+                            <div class="step-title">Link Cotización + Validación</div>
+                            <div class="step-description">Subir link Excel cotización, validar contra proforma del proveedor, especificar Giro 1/Financiamiento</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="team">Estrategia</div>
+                            <div class="step-title">Cálculo de Intereses</div>
+                            <div class="step-description">Calcular intereses del giro, usar cotización validada, subir imagen Total operación</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="team">Operaciones México</div>
+                            <div class="step-title">Información Gastos Logísticos</div>
+                            <div class="step-description">Flete internacional, seguro, gastos en destino, IDs Integra y Paga</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">5</div>
+                            <div class="team">Facturación</div>
+                            <div class="step-title">Creación de Proforma</div>
+                            <div class="step-description">Usar datos de Operaciones México, incluir link de cotización, crear proforma completa</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">6</div>
+                            <div class="team">Operaciones</div>
+                            <div class="step-title">Creación en Plataforma Finkargo</div>
+                            <div class="step-description">Crear componente de financiamiento, adjuntar proforma, documentos legales automáticos</div>
+                        </div>
+                    </div>
+                    <div class="summary-grid">
+                        <div class="summary-card">
+                            <h4>🎯 Objetivo</h4>
+                            <p>Primer componente de financiamiento con validación previa de proforma del proveedor</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4>🔄 Validación Inicial</h4>
+                            <p>Procurement valida proforma antes de proceder con cotización</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4>⚖️ Sin Paso Legal</h4>
+                            <p>Documentos legales se generan automáticamente en la plataforma</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mexico-process7" class="individual-process">
+                    <h3>💰 Flujo 7 México: Segundo Componente de Financiamiento</h3>
+                    <div class="process-flowchart">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="team">Procurement</div>
+                            <div class="step-title">Validación Proforma Proveedor</div>
+                            <div class="step-description">Adjuntar nueva proforma si hay cambios en negociación, si no hay cambios continuar sin adjuntar</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="team">Pricing</div>
+                            <div class="step-title">Link Cotización + Validación</div>
+                            <div class="step-description">Subir link Excel cotización, validar contra proforma del proveedor, especificar Giro 2/Financiamiento</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="team">Estrategia</div>
+                            <div class="step-title">Cálculo de Intereses</div>
+                            <div class="step-description">Calcular intereses del giro, usar cotización validada, subir imagen Total operación</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="team">Operaciones México</div>
+                            <div class="step-title">Información Gastos Logísticos</div>
+                            <div class="step-description">Flete internacional, seguro, gastos en destino, IDs Integra y Paga</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">5</div>
+                            <div class="team">Facturación</div>
+                            <div class="step-title">Creación de Proforma</div>
+                            <div class="step-description">Usar datos de Operaciones México, incluir link de cotización, crear proforma completa</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">6</div>
+                            <div class="team">Operaciones</div>
+                            <div class="step-title">Creación en Plataforma Finkargo</div>
+                            <div class="step-description">Crear componente de financiamiento, adjuntar proforma, documentos legales automáticos</div>
+                        </div>
+                    </div>
+                    <div class="summary-grid">
+                        <div class="summary-card">
+                            <h4>🎯 Objetivo</h4>
+                            <p>Segundo componente de financiamiento con validación previa de proforma del proveedor</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4>🔄 Validación Inicial</h4>
+                            <p>Procurement valida proforma antes de proceder con cotización</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4>⚖️ Sin Paso Legal</h4>
+                            <p>Documentos legales se generan automáticamente en la plataforma</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mexico-process8" class="individual-process">
+                    <h3>🌍 Flujo 8 México: Segundo Giro a Proveedor Internacional</h3>
+                    <div class="process-flowchart">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="team">Operaciones</div>
+                            <div class="step-title">Validación Documentación Aduanal</div>
+                            <div class="step-description">Llenar formulario checklist aduanal, adjuntar documentos de soporte, prevenir inconvenientes legales en puerto</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="team">Procurement</div>
+                            <div class="step-title">Solicitud Segundo Giro</div>
+                            <div class="step-description">Solicitar valor del giro, segundo pago al proveedor, pago final o saldo pendiente</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="team">Comité Giro</div>
+                            <div class="step-title">Aprobación Pago</div>
+                            <div class="step-description">Revisar información anterior, aprobar pago al proveedor, validar documentación aduanal</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="team">Mesa Control</div>
+                            <div class="step-title">Validación Integral</div>
+                            <div class="step-description">Información general de operación, giro solicitado, proforma proveedor actualizada, cotización Excel válida</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">5</div>
+                            <div class="team">Tesorería</div>
+                            <div class="step-title">Pago al Proveedor</div>
+                            <div class="step-description">Ejecutar pago al proveedor, generar soporte de pago, adjuntar documentos</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">6</div>
+                            <div class="team">Procurement</div>
+                            <div class="step-title">Confirmación Recepción</div>
+                            <div class="step-description">Descargar soporte de Tesorería, confirmar recepción de fondos, validar con proveedor</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-number">7</div>
+                            <div class="team">Operaciones</div>
+                            <div class="step-title">Continuar Flujo Final</div>
+                            <div class="step-description">Pago realizado exitosamente, continuar con flujo factura final, solicitar factura final operación</div>
+                        </div>
+                    </div>
+                    <div class="summary-grid">
+                        <div class="summary-card">
+                            <h4>🎯 Objetivo</h4>
+                            <p>Segundo giro con validación aduanal para prevenir inconvenientes legales en puerto</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4>📋 Validación Aduanal</h4>
+                            <p>Paso adicional único de México para asegurar documentación del cliente</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4>🎯 Prevención</h4>
+                            <p>Evita inconvenientes legales durante liberación de mercancía</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1409,6 +1667,70 @@
     </div>
 
     <script>
+        function showCountry(countryId, element) {
+            // Ocultar todos los contenidos de país
+            const countries = document.querySelectorAll('.country-content');
+            countries.forEach(country => {
+                country.classList.remove('active');
+            });
+            
+            // Mostrar el país seleccionado
+            document.getElementById(countryId).classList.add('active');
+            
+            // Actualizar botones de país
+            const countryButtons = document.querySelectorAll('.country-btn');
+            countryButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            if (element) {
+                element.classList.add('active');
+            }
+            
+            // Mostrar el primer proceso del país seleccionado
+            if (countryId === 'colombia') {
+                showProcess('colombia', 'process1');
+                const firstBtn = document.querySelector('#colombia .process-btn');
+                if (firstBtn) {
+                    const processBtns = document.querySelectorAll('#colombia .process-btn');
+                    processBtns.forEach(btn => btn.classList.remove('active'));
+                    firstBtn.classList.add('active');
+                }
+            } else if (countryId === 'mexico') {
+                showProcess('mexico', 'process5');
+                const firstBtn = document.querySelector('#mexico .process-btn');
+                if (firstBtn) {
+                    const processBtns = document.querySelectorAll('#mexico .process-btn');
+                    processBtns.forEach(btn => btn.classList.remove('active'));
+                    firstBtn.classList.add('active');
+                }
+            }
+        }
+
+        function showProcess(country, processId, element) {
+            // Ocultar todos los procesos del país específico
+            const processes = document.querySelectorAll(`#${country} .individual-process`);
+            processes.forEach(process => {
+                process.classList.remove('active');
+            });
+            
+            // Mostrar el proceso seleccionado
+            const targetProcess = document.getElementById(`${country}-${processId}`);
+            if (targetProcess) {
+                targetProcess.classList.add('active');
+            }
+            
+            // Actualizar botones de proceso del país específico
+            const buttons = document.querySelectorAll(`#${country} .process-btn`);
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            if (element) {
+                element.classList.add('active');
+            }
+        }
+
         function showSection(sectionId, element) {
             // Ocultar todas las secciones
             const sections = document.querySelectorAll('.content-section');
@@ -1430,27 +1752,6 @@
             }
         }
 
-        function showProcess(processId, element) {
-            // Ocultar todos los procesos
-            const processes = document.querySelectorAll('.individual-process');
-            processes.forEach(process => {
-                process.classList.remove('active');
-            });
-            
-            // Mostrar el proceso seleccionado
-            document.getElementById(processId).classList.add('active');
-            
-            // Actualizar botones de proceso
-            const buttons = document.querySelectorAll('.process-btn');
-            buttons.forEach(button => {
-                button.classList.remove('active');
-            });
-            
-            if (element) {
-                element.classList.add('active');
-            }
-        }
-
         // Inicializar la primera sección
         document.addEventListener('DOMContentLoaded', function() {
             // Activar la primera sección
@@ -1462,12 +1763,8 @@
                 firstNavBtn.classList.add('active');
             }
             
-            // Activar el primer proceso
-            showProcess('process1');
-            const firstProcessBtn = document.querySelector('.process-btn');
-            if (firstProcessBtn) {
-                firstProcessBtn.classList.add('active');
-            }
+            // Activar Colombia por defecto
+            showCountry('colombia');
         });
     </script>
 </body>
